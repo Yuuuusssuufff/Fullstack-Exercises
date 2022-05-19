@@ -1,20 +1,38 @@
 import React from 'react'
 
 function App() {
-  let Header =()=> <h1>give feedback</h1>
-  let Buttons = () => (<div>
-    <button>good</button>
-    <button>neutral</button>  
-    <button>bad</button>
+  //state
+  const [good, setGood] = React.useState(0)
+  const [bad, setBad] = React.useState(0)
+  const [neutral, setNeutral] = React.useState(0)
+
+  function addGood(){
+    return setGood(good + 1)
+  }
+  function addBad(){
+    return setBad(bad + 1)
+  }
+  function addNeutral(){
+    return setNeutral(neutral + 1)
+  }
+  // components
+  let Header =(props)=> <h1>{props.text}</h1>
+
+  let Buttons = (props) => (<div>
+    <button onClick = {addGood}>good</button>
+    <button onClick={addBad}>neutral</button>  
+    <button onClick={addNeutral}>bad</button>
   </div>)
-  let Content = ()=> <h1>statistics</h1>
-  let Total = ()=> <div>
-    <p>good</p>
-    <p>neutral</p>
-    <p> bad</p>
+
+  let Content = (props)=> <h1>statistics </h1>
+
+  let Total = (props)=> <div>
+    <p>good {}</p>
+    <p>neutral {}</p>
+    <p> bad {}</p>
   </div>
    return <div>
-     <Header />
+     <Header text="give feedback"/>
      <Buttons />
      <Content />
      <Total />
