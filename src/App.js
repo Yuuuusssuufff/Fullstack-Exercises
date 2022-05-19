@@ -1,11 +1,21 @@
 import React from 'react'
 
 function App() {
-  let Header =()=> <h1>Header</h1>
-  let Content = ()=> <p>Content</p>
-  let Total = ()=> <p>Content</p>
+  let Header =()=> <h1>give feedback</h1>
+  let Buttons = () => (<div>
+    <button>good</button>
+    <button>neutral</button>  
+    <button>bad</button>
+  </div>)
+  let Content = ()=> <h1>statistics</h1>
+  let Total = ()=> <div>
+    <p>good</p>
+    <p>neutral</p>
+    <p> bad</p>
+  </div>
    return <div>
      <Header />
+     <Buttons />
      <Content />
      <Total />
    </div>
