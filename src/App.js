@@ -1,28 +1,53 @@
-const App = () => {
-   const course = {name: 'Half Stack application development',
-      parts :[ 
-                  {
-                    name: 'Fundamentals of React',
-                    exercises: 10
-                  },
-                  {
-                    name: 'Using props to pass data',
-                    exercises: 7
-                  },
-                  {
-                    name: 'State of a component',
-                    exercises: 14
-                  }
-              ]}
-console.log(course.parts[0].key)
-let Header =()=> <h1>{course.name}</h1>
-let Content = ()=> <p>Content</p>
-let Total = ()=> <p>Content</p>
+import React from 'react'
+
+function App() {
+  let Header =()=> <h1>Header</h1>
+  let Content = ()=> <p>Content</p>
+  let Total = ()=> <p>Content</p>
    return <div>
      <Header />
      <Content />
      <Total />
    </div>
+  
+}
+
+export default App
+
+
+
+
+
+
+// Exercise 1.3-1.5
+// const App = () => {
+//    const course = {name: 'Half Stack application development',
+//       parts :[ 
+//                   {
+//                     name: 'Fundamentals of React',
+//                     exercises: 10
+//                   },
+//                   {
+//                     name: 'Using props to pass data',
+//                     exercises: 7
+//                   },
+//                   {
+//                     name: 'State of a component',
+//                     exercises: 14
+//                   }
+//               ]}
+// console.log(course.parts[0].key)
+// let Header =()=> <h1>{course.name}</h1>
+// let Content = ()=> <p>Content</p>
+// let Total = ()=> <p>Content</p>
+//    return <div>
+//      <Header />
+//      <Content />
+//      <Total />
+//    </div>
+   
+//    }
+//   export default App
 // let Part = parts.map(part => <p key={part.name}>{part.name} {part.exercises}</p>)
 
 // let each = parts.map(a => a.exercises)
@@ -53,8 +78,8 @@ let Total = ()=> <p>Content</p>
 //       <Total part={sumExercise}/>
 //     </div>
 //   )
-}
-  export default App
+
+
 
 
 
