@@ -1,6 +1,6 @@
 import React from 'react'
 
-function App() {
+export default function App() {
   //state
   // const [good, setGood] = React.useState(0)
   // const [bad, setBad] = React.useState(0)
@@ -12,8 +12,14 @@ function App() {
   })
 
 
-  function handleClick(){
-    setCounter(prevCounter => { return ({...prevCounter, good: prevCounter.good + 1})})
+  function addGood(){
+    setCounter(prevCounter => { return ({...prevCounter, good: prevCounter.good + 1})})}
+
+    function addNeutral(){
+      setCounter(prevCounter => { return ({...prevCounter, neutral: prevCounter.neutral + 1})})}
+
+      function addBad(){
+        setCounter(prevCounter => { return ({...prevCounter, bad: prevCounter.bad + 1})})}
   
   // function addToCounter () => {return setCounter(counter + 1)}
   
@@ -31,9 +37,9 @@ function App() {
 
 
   let Buttons = (props) => (<div>
-    <button onClick = {handleclick}>good</button>
-    <button onClick={setCounter((prevCounter)=> {return ({...prevCounter, neutral: prevCounter.neutral + 1})})}>neutral</button>  
-    <button onClick={setCounter((prevCounter)=> {return ({...prevCounter, bad: prevCounter.bad + 1})})} >bad</button>
+    <button onClick = {addGood}>good</button>
+    <button onClick={addNeutral}>neutral</button>  
+    <button onClick={addBad} >bad</button>
   </div>)
   // let Buttons = (props) => (<div>
   //   <button onClick = {addGood}>good</button>
@@ -58,7 +64,7 @@ function App() {
    </div>
   
   }
-export default App
+// export default App
 
 
 
@@ -214,5 +220,5 @@ export default App
 //         <p>{part2.name} {part2.exercises} </p>
 //         <p>{part3.name} {part3.exercises} </p>
 //         <p>The total number of exercise {part1.exercises + part2.exercises + part3.exercises}</p>
-//       </div>
-//     )
+//       </div>)
+      
