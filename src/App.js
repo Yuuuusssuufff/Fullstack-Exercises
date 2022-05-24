@@ -5,13 +5,15 @@ export default function App() {
   // const [good, setGood] = React.useState(0)
   // const [bad, setBad] = React.useState(0)
   // const [neutral, setNeutral] = React.useState(0)
+
+  // state declaration
   const [counter, setCounter] = React.useState({
     good: 0,
     bad: 0,
     neutral: 0,
   })
 
-
+// Event handlers
   function addGood(){
     setCounter(prevCounter => { return ({...prevCounter, good: prevCounter.good + 1})})}
 
@@ -53,7 +55,7 @@ export default function App() {
   let Content = (props)=> <h1>statistics </h1>
   
 // Refactor statistics
-const statisticLine = ({text, counter}) => <p>{text} {counter} </p>
+const StatisticLine = ({text, value}) => <p>{text} {value} </p>
 
 
 
@@ -61,16 +63,47 @@ const statisticLine = ({text, counter}) => <p>{text} {counter} </p>
   let sumCounter = counter.good + counter.bad + counter.neutral
   let Statistics = (props)=> {
   
-if(counter.good === 0 && counter.neutral === 0 && counter.bad === 0)
+
+// Table Work
+const StatisticsTable = () => {
+  return (
+    <table style={{width: "10%"}}>
+      <tbody>
+      <tr>
+        <td>good</td>
+        <td>{counter.good}</td>
+      </tr>
+        <tr>
+        <td>neutral</td>
+        <td>{counter.neutral}</td>
+      </tr>
+        <tr>
+        <td>bad</td>
+        <td>{counter.bad}</td>
+      </tr>
+        <tr>
+        <td>all</td>
+        <td>{sumCounter}</td>
+      </tr>
+        <tr>
+        <td>average</td>
+        <td>{((counter.good - counter.bad )/9).toFixed(1)}</td>
+      </tr>
+        <tr>
+        <td>positive</td>
+        <td>{((counter.good/sumCounter)*100).toFixed(1)}</td>
+      </tr>
+      </tbody>
+    </table>
+  )
+}
+
+
+
+    if(counter.good === 0 && counter.neutral === 0 && counter.bad === 0)
     {return <h3>No feedback given</h3>}
-else  {return (<div>
-    <p >good {counter.good}</p>
-    <p>neutral {counter.neutral}</p>
-    <p> bad {counter.bad}</p>
-    <p>all {sumCounter}</p>
-    <p>average {((counter.good - counter.bad )/9).toFixed(12)}</p>
-    <p>positive {((counter.good/sumCounter)*100).toFixed(12)} %</p>
-  </div>)}
+else  {return <StatisticsTable />
+}
  }
 
 
@@ -82,7 +115,18 @@ else  {return (<div>
    </div>
   
   }
-// export default App
+
+
+
+// Former statistics lines
+  // (<div>
+  //   <StatisticLine text ="good" value= {counter.good}/>
+  //   <StatisticLine text ="neutal" value= {counter.neutral}/>
+  //   <StatisticLine text ="bad" value= {counter.bad}/>
+  //   <p>all {sumCounter}</p>
+  //   <p>average {((counter.good - counter.bad )/9).toFixed(12)}</p>
+  //   <p>positive {((counter.good/sumCounter)*100).toFixed(12)} %</p>
+  // </div>)
 
 
 
