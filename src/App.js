@@ -8,21 +8,21 @@ export default function App() {
   const [counter, setCounter] = React.useState({
     good: 0,
     bad: 0,
-    neutral: 0
+    neutral: 0,
   })
 
 
   function addGood(){
     setCounter(prevCounter => { return ({...prevCounter, good: prevCounter.good + 1})})}
 
-    function addNeutral(){
-      setCounter(prevCounter => { return ({...prevCounter, neutral: prevCounter.neutral + 1})})}
+  function addNeutral(){
+    setCounter(prevCounter => { return ({...prevCounter, neutral: prevCounter.neutral + 1})})}
 
-      function addBad(){
-        setCounter(prevCounter => { return ({...prevCounter, bad: prevCounter.bad + 1})})}
+  function addBad(){
+    setCounter(prevCounter => { return ({...prevCounter, bad: prevCounter.bad + 1})})}
   
   // function addToCounter () => {return setCounter(counter + 1)}
-  
+    
   // function add(){
   //   return setGood(good + 1)
   // }
@@ -33,34 +33,52 @@ export default function App() {
   //   return setNeutral(neutral + 1)
   // }
   // components
-  let Header =(props)=> <h1>{props.text}</h1>
+  let Header =({text})=>{ 
+      return
+  <h1>{text}</h1>
+}
+    
 
-
-  let Buttons = (props) => (<div>
+  let Buttons = () => (<div>
     <button onClick = {addGood}>good</button>
     <button onClick={addNeutral}>neutral</button>  
     <button onClick={addBad} >bad</button>
   </div>)
   // let Buttons = (props) => (<div>
   //   <button onClick = {addGood}>good</button>
-  //   <button onClick={addNeutral}>neutral</button>  
-  //   <button onClick={addBad}>bad</button>
+  //   <button onClick= {addNeutral}>neutral</button>  
+  //   <button onClick= {addBad}>bad</button>
   // </div>)
 
   let Content = (props)=> <h1>statistics </h1>
+  
+// Refactor statistics
+const statisticLine = ({text, counter}) => <p>{text} {counter} </p>
 
-  let Total = (props)=> <div>
+
+
+
+  let sumCounter = counter.good + counter.bad + counter.neutral
+  let Statistics = (props)=> {
+  
+if(counter.good === 0 && counter.neutral === 0 && counter.bad === 0)
+    {return <h3>No feedback given</h3>}
+else  {return (<div>
     <p >good {counter.good}</p>
     <p>neutral {counter.neutral}</p>
     <p> bad {counter.bad}</p>
-  </div>
+    <p>all {sumCounter}</p>
+    <p>average {((counter.good - counter.bad )/9).toFixed(12)}</p>
+    <p>positive {((counter.good/sumCounter)*100).toFixed(12)} %</p>
+  </div>)}
+ }
 
 
    return <div>
      <Header text="give feedback"/>
      <Buttons />
      <Content />
-     <Total />
+     <Statistics />
    </div>
   
   }
@@ -112,14 +130,14 @@ export default function App() {
 // let Header = (props) => <h1>{props.course}</h1> 
 // let Content = (props)=> <div>
   //  {props.part}
-    {/* prop values
-    name1 = {parts[0].name} exercises1={parts[0].exercises}
-      name2 = {parts[1].name} exercises2={parts[1].exercises}
-      name3 = {parts[2].name} exercises3={parts[2].exercises}
+    // {/* prop values
+    // name1 = {parts[0].name} exercises1={parts[0].exercises}
+    //   name2 = {parts[1].name} exercises2={parts[1].exercises}
+    //   name3 = {parts[2].name} exercises3={parts[2].exercises}
 
-        <p>{props.name1} {props.exercises1}</p>
-        <p>{props.name2} {props.exercises2}</p>
-        <p>{props.name3} {props.exercises3}</p> */}
+    //     <p>{props.name1} {props.exercises1}</p>
+    //     <p>{props.name2} {props.exercises2}</p>
+    //     <p>{props.name3} {props.exercises3}</p> */}
         // </div>
 
 // let Total = (props) => <div>Total number of exercises {props.part}</div>
@@ -158,13 +176,13 @@ export default function App() {
 //     </div>)
 //   }
 // 
-// const Part1 = () => {
+// const Part1 = (props) => {
 //  return (<div>
 //  {props.part1} {props.exercise1}
 //  </div>)
 // }
 
-// const Part2 = () => {
+// const Part2 = (props) => {
 //   return (<div>
 //   {props.part2} {props.exercise2}
 //   </div>)
