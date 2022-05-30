@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 import Anecdotes from './components/Anecdotes'
+// import Anecdotes from './components/Anecdotes'
+import Form from './components/Form'
+
 
 export default function App() {
 return <div>

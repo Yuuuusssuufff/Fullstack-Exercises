@@ -11,31 +11,44 @@ function Anecdotes() {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients'
   ]
-  
-  const randomIndex = Math.floor(Math.random()*(anecdotes.length))
-
-  const [selected, setSelected] = React.useState(anecdotes[0])
-
-  const [votes, setVotes] = React.useState([0])
-// console.log(votes[2])
-  const style = {
-   borderRadius: '5px', 
-   border: "1px solid yellow"
-  }
-
-
-  
-  function addVotes(){
-    const newvotes = [...votes]
+    // const points = new Array(7).fill(0)
+    const points = [0,1,2,3,4,5,6]
+    console.log(points)
+    // let copy = [...points]
+    // console.log(copy)
+    const randomIndex = Math.floor(Math.random()*(anecdotes.length))
+    let randomAnecdote = anecdotes[randomIndex]
+    const [selected, setSelected] = React.useState(anecdotes[0])
+   
+    const style = {
+      borderRadius: '5px', 
+      border: "1px solid yellow"
     }
-
-function randomAnecdotes(){
-    setSelected(anecdotes[randomIndex])
-}
+    
+    
+    function randomAnecdotes(){
+      setSelected(randomAnecdote)
+    }
+    
+    const index = anecdotes.indexOf(selected)
+    const [point, setPoint] = React.useState(points[index])
+    // console.log(point)
+    
+    function addVotes(){
+      const newP = [...point]
+      
+     setPoint(newP[index] + 1)
+      
+    }
+    
+    // console.log(votePoint)
+    
   return (
     <div>
-      {selected} <br />
-      <p>has {votes} votes</p>
+      <div>
+        {selected} 
+      </div>
+      <div>has {points[index]} votes</div>
       <button onClick = {addVotes}>vote</button>
       <button onClick = {randomAnecdotes} style = {style}>next anecdote</button>
     </div>
