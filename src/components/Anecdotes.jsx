@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import React from 'react'
 
 function Anecdotes() {
@@ -12,13 +13,15 @@ function Anecdotes() {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients'
   ]
     // const points = new Array(7).fill(0)
-    const points = [0,1,2,3,4,5,6]
-    console.log(points)
+    // const points = [0,1,2,3,4,5,6]
+    // console.log(points)
     // let copy = [...points]
     // console.log(copy)
-    const randomIndex = Math.floor(Math.random()*(anecdotes.length))
-    let randomAnecdote = anecdotes[randomIndex]
-    const [selected, setSelected] = React.useState(anecdotes[0])
+    const randomIndex = ()=> Math.floor(Math.random()*anecdotes.length)
+    // let randomAnecdote = anecdotes[randomIndex]
+    const [selected, setSelected] = useState(0)
+    // const index = anecdotes.indexOf(selected)
+    const [point, setPoint] = useState([0,0,0,0,0,0,0])
    
     const style = {
       borderRadius: '5px', 
@@ -27,28 +30,27 @@ function Anecdotes() {
     
     
     function randomAnecdotes(){
-      setSelected(randomAnecdote)
+      setSelected(randomIndex)
     }
     
-    const index = anecdotes.indexOf(selected)
-    const [point, setPoint] = React.useState(points[index])
     // console.log(point)
     
     function addVotes(){
       const newP = [...point]
+      newP[selected] = newP[selected] + 1
       
-     setPoint(newP[index] + 1)
+     setPoint(newP)
       
     }
     
     // console.log(votePoint)
-    
+   
   return (
     <div>
       <div>
-        {selected} 
+        {anecdotes[selected]} 
       </div>
-      <div>has {points[index]} votes</div>
+      <div>has {point[selected]} votes</div>
       <button onClick = {addVotes}>vote</button>
       <button onClick = {randomAnecdotes} style = {style}>next anecdote</button>
     </div>
