@@ -2,3 +2,9 @@
   list-style: none;
   /* background-color: brown; */
 }
+.but {
+  display: inline;
+}
+li {
+  display: inline;
+}
